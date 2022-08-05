@@ -1,23 +1,17 @@
 import sys
-N = int(sys.stdin.readline())
-card = list(map(int, sys.stdin.readline().split()))
-M = int(sys.stdin.readline())
-ans = list(map(int, sys.stdin.readline().split()))
-card.sort()
-left = card[:len(card)//2]
-right = card[len(card) // 2:]
-print(left, right)
-"""
-def Search(arr, key):
-    cnt = 0
-    if len(arr) == 1:
-        if arr == key:
-            cnt += 1
-            return cnt
-    left = arr[:len(arr)//2]
-    right = arr[len(arr) // 2:]
-    cnt = Search(left, key) + Search(right, key)
-    return cnt
-for x in range(M):
-    print(Search(card, x), end = ' ')
-    """
+from collections import Counter
+
+input = sys.stdin.readline
+
+N = int(input())
+n_list = list(map(str,input().split()))
+M = int(input())
+m_list = list(map(str,input().split()))
+
+cnt = Counter(n_list)
+ans_list = []
+
+for num in m_list:
+    ans_list.append(cnt[num])
+
+print(f'{" ".join(map(str,ans_list))}')
